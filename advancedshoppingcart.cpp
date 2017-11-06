@@ -5,32 +5,37 @@ using namespace std;
 class ShoppingCart
 {	
 	public:
-		int colgatequantity,closeupquantity;
+		int colgateQuantity,closeupQuantity;
 	ShoppingCart()
 	{
-		colgatequantity=0;
-		closeupquantity=0;
+		colgateQuantity=0;
+		closeupQuantity=0;
 	}
 	public:
 
+	//List all the items
 	void listallItems()
 	{
 		cout<<"Items present are \n 1.Colgate\n 2.CloseUp\n";
 	}
-
-	int calculateprice(int quantity,int price)
+	
+	//Calculate Price
+	int calculatePrice(int quantity,int price)
 	{
 		return quantity*price;
 	}
-
-	int calculateoffer(int quantity,int price)
+	
+	//Function to calculate Discount
+	int calculateOffer(int quantity,int price)
 	{
 		int quotient=quantity/3;
 		int remainder=quantity%3;
-		int total=calculateprice(quotient,20)+calculateprice(remainder,10);
+		int total=calculatePrice(quotient,20)+calculatePrice(remainder,10);
 		return total;
 	}
+	
 
+	//To add items in cart
 	void addItems()
 	{
 		int addquantity;
@@ -46,23 +51,27 @@ class ShoppingCart
 			{
 				cout<<"Enter the quantity of colgate you want to purchase\n";
 				cin>>addquantity;
-				colgatequantity=addquantity;
+				colgateQuantity+=addquantity;
+				cout<<"\nColgate in cart\n"<<colgateQuantity;
 			}
 			if(choiceofuser==2)
 			{
 				cout<<"Enter the quantity of closeup you want to purchase\n";
 				cin>>addquantity;
-				closeupquantity=addquantity;
+				closeupQuantity+=addquantity;
+				cout<<"\nCloseUp in cart\n"<<closeupQuantity;
 			}
 			
 		}while(choiceofuser!=0 && choiceofuser<=2);
 		
-	}		
-
+	}
+	
+			
+	// to remove items from cart
 	int removeItems()
 	{
-		int option,removequantity;
-		if(colgatequantity==0 && closeupquantity==0)
+		int option,removeQuantity;
+		if(colgateQuantity==0 && closeupQuantity==0)
 		 { 
 			   cout<<"First add Items in Cart\n";	
 				return 0;
@@ -75,43 +84,44 @@ class ShoppingCart
 		if(option==1)
 		{
 			cout<<"Enter the quantity of colgate you want to remove\n";
-			cin>>removequantity;
-			if(colgatequantity==0)
+			cin>>removeQuantity;
+			if(colgateQuantity==0)
 			{	cout<<"Nothing to remove!\n";
 				return 0;
 			}
-			colgatequantity-=removequantity;
-			cout<<"\nColgate left in cart\n"<<colgatequantity;
+			colgateQuantity-=removeQuantity;
+			cout<<"\nColgate left in cart\n"<<colgateQuantity;
 		}
 		if(option==2)
 		{
 			cout<<"Enter the quantity of closeup you want to remove\n";	
-			cin>>removequantity;
-			if(closeupquantity==0)
+			cin>>removeQuantity;
+			if(closeupQuantity==0)
 			{	cout<<"Nothing to remove!\n";
 				return 0;
 			}
-			closeupquantity-=removequantity;
-			cout<<"\nCloseUp left in cart\n"<<closeupquantity;
+			closeupQuantity-=removeQuantity;
+			cout<<"\nCloseUp left in cart\n"<<closeupQuantity;
 		}
 		}while(option!=0 && option<=2);
 		
 	}
 
+	//Tells user final price he has to pay
 	int checkout()
 	{
-		int offer;	
-		if(colgatequantity==0 && closeupquantity==0)
+		int option;	
+		if(colgateQuantity==0 && closeupQuantity==0)
 		 { 
 			   cout<<"Cart Empty\n";	
 				return 0;
 		}	
 		cout<<"Buy 2 Get 1 offer is going on purchase of colgate\n Press 1 to avail it\n Press 0 to avoid\n";
-		cin>>offer;
-		if(offer==1)
-			cout<<"Price to pay after discount\n "<<"For Colgate "<<calculateoffer(colgatequantity,10)<<"\nFor CloseUp "<<calculateprice(closeupquantity,15)<<"\nTotal ="<<calculateoffer(colgatequantity,10)+calculateprice(closeupquantity,15);
-		if(offer==2)
-			cout<<"Price to pay \n"<<"For CloseUp "<<calculateprice(closeupquantity,15)<<"\nFor Colgate "<<calculateprice(colgatequantity,10)<<"Total= "<<calculateprice(colgatequantity,10)+calculateprice(closeupquantity,15);
+		cin>>option;
+		if(option==1)
+			cout<<"Price to pay after discount\n "<<"For Colgate "<<calculateOffer(colgateQuantity,10)<<"\nFor CloseUp "<<calculatePrice(closeupQuantity,15)<<"\nTotal ="<<calculateOffer(colgateQuantity,10)+calculatePrice(closeupQuantity,15);
+		if(option==2)
+			cout<<"Price to pay \n"<<"For CloseUp "<<calculatePrice(closeupQuantity,15)<<"\nFor Colgate "<<calculatePrice(colgateQuantity,10)<<"Total= "<<calculatePrice(colgateQuantity,10)+calculatePrice(closeupQuantity,15);
 	}
 };
 
