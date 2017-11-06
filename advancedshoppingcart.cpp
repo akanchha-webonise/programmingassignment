@@ -109,9 +109,9 @@ class ShoppingCart
 		cout<<"Buy 2 Get 1 offer is going on purchase of colgate\n Press 1 to avail it\n Press 0 to avoid\n";
 		cin>>offer;
 		if(offer==1)
-			cout<<"Price to pay after discount\n "<<"For Colgate "<<calculateoffer(colgatequantity,10)<<"\nFor CloseUp "<<calculateprice(closeupquantity,5)<<"\nTotal ="<<calculateoffer(colgatequantity,10)+calculateprice(closeupquantity,15);
+			cout<<"Price to pay after discount\n "<<"For Colgate "<<calculateoffer(colgatequantity,10)<<"\nFor CloseUp "<<calculateprice(closeupquantity,15)<<"\nTotal ="<<calculateoffer(colgatequantity,10)+calculateprice(closeupquantity,15);
 		if(offer==2)
-			cout<<"Price to pay \n"<<"For CloseUp "<<calculateprice(closeupquantity,5)<<"\nFor Colgate "<<calculateprice(colgatequantity,10)<<"Total= "<<calculateprice(colgatequantity,10)+calculateprice(closeupquantity,15);
+			cout<<"Price to pay \n"<<"For CloseUp "<<calculateprice(closeupquantity,15)<<"\nFor Colgate "<<calculateprice(colgatequantity,10)<<"Total= "<<calculateprice(colgatequantity,10)+calculateprice(closeupquantity,15);
 	}
 };
 
